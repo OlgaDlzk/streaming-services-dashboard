@@ -4,6 +4,18 @@ import json
 from bson import json_util
 from bson.json_util import dumps
 import create_mongodb
+# from dotenv import load_dotenv
+# import os 
+# import pymongo
+
+# load_dotenv() # use dotenv to hide sensitive credential as environment variables
+
+# DATABASE_URL=f'mongodb+srv://loooret:{os.environ.get("password")}'\
+#               '@cluster0.zf9dnan.mongodb.net/?retryWrites=true&w=majority' # get connection url from environment
+
+# client=pymongo.MongoClient(DATABASE_URL) # establish connection with database
+
+# mongo_db=client.db
 
 # create instance of Flask class
 app = Flask(__name__)

@@ -1,10 +1,19 @@
 import pymongo
 import pandas as pd
 import json
+from dotenv import load_dotenv
+import os
 
 def create_db():
 
+    # load_dotenv() # use dotenv to hide sensitive credential as environment variables
+
+    # DATABASE_URL=f'mongodb+srv://loooret:{os.environ.get("password")}'\
+    #           '@cluster0.zf9dnan.mongodb.net/?retryWrites=true&w=majority' # get connection url from environment
+    
+       
     # connection using pymongo
+    # client = pymongo.MongoClient("DATABASE_URL")
     client = pymongo.MongoClient("mongodb://localhost:27017")
 
     # read in csv file as dataframe
