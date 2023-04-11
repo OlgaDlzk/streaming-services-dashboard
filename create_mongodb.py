@@ -4,7 +4,7 @@ import json
 from dotenv import load_dotenv
 import os
 
-def create_db():
+def create_db(url:str):
 
     # load_dotenv() # use dotenv to hide sensitive credential as environment variables
 
@@ -14,7 +14,8 @@ def create_db():
        
     # connection using pymongo
     # client = pymongo.MongoClient("DATABASE_URL")
-    client = pymongo.MongoClient("mongodb://localhost:27017")
+    # client = pymongo.MongoClient("mongodb://localhost:27017")
+    client = pymongo.MongoClient(url)
 
     # read in csv file as dataframe
     df_horizontal = pd.read_csv("static/etl/csv/complete_data/complete_horizontal.csv")

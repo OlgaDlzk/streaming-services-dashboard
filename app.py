@@ -5,13 +5,13 @@ from bson import json_util
 from bson.json_util import dumps
 import create_mongodb
 # from dotenv import load_dotenv
-# import os 
-# import pymongo
+import os 
+import pymongo
 
 # load_dotenv() # use dotenv to hide sensitive credential as environment variables
 
-# DATABASE_URL=f'mongodb+srv://loooret:{os.environ.get("password")}'\
-#               '@cluster0.zf9dnan.mongodb.net/?retryWrites=true&w=majority' # get connection url from environment
+DATABASE_URL=f'mongodb+srv://loooret:{os.environ.get("password")}'\
+              '@cluster0.zf9dnan.mongodb.net/?retryWrites=true&w=majority' # get connection url from environment
 
 # client=pymongo.MongoClient(DATABASE_URL) # establish connection with database
 
@@ -19,8 +19,11 @@ import create_mongodb
 
 # create instance of Flask class
 app = Flask(__name__)
+mongo_url = "mongodb://localhost:27017"
+mongo_url = DATABASE_URL
 
-app.config["MONGO_URI"] = "mongodb://localhost:27017/streamTest"
+# app.config["MONGO_URI"] = "mongodb://localhost:27017/streamTest"
+app.config["MONGO_URI"] = mongo_url + "/streamTest"
 mongo = PyMongo(app)
 
 
@@ -28,7 +31,7 @@ mongo = PyMongo(app)
 @app.route("/")
 # what will be displayed on pg wrapped in this function
 def home():
-    create_mongodb.create_db()
+    create_mongodb.create_db(mongo_url)
     # first document in the collection
     # first_record = mongo.db.streamHorizontal.find_one()
 
