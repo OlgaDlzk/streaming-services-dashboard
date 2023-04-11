@@ -10,4 +10,4 @@ COPY . /app
 
 ENV FLASK_APP=app.py
 
-CMD gunicorn app:app -b 0.0.0.0:$PORT --timeout 120
+CMD ["gunicorn", "--bind", "app:app", "0.0.0.0:8080", "--timeout 120"]
