@@ -10,7 +10,7 @@ from pymongo import MongoClient
 
 # load_dotenv() # use dotenv to hide sensitive credential as environment variables
 
-DATABASE_URL= 'mongodb+srv://loooret:<password>@cluster0.zf9dnan.mongodb.net/?retryWrites=true&w=majority' # get connection url from environment
+DATABASE_URL= 'mongodb+srv://loooret:password@cluster0.zf9dnan.mongodb.net/?retryWrites=true&w=majority' # get connection url from environment
 # DATABASE_URL=f'mongodb+srv://loooret:{os.environ.get("password")}'\
 #               '@cluster0.zf9dnan.mongodb.net/?retryWrites=true&w=majority' # get connection url from environment
 
