@@ -20,12 +20,12 @@ DATABASE_URL= 'mongodb+srv://loooret:5wXW3d4uMtqn6Ul6@cluster0.zf9dnan.mongodb.n
 
 # create instance of Flask class
 app = Flask(__name__)
-mongo_url = "mongodb://localhost:27017"
+# mongo_url = "mongodb://localhost:27017"
 mongo_url = DATABASE_URL
 
 # app.config["MONGO_URI"] = mongo_url + "/streamTest"
 app.config["MONGO_URI"] = mongo_url 
-mongo = PyMongo(app)
+# mongo = PyMongo(app)
 
 cluster = MongoClient(DATABASE_URL)
 db = cluster["streamTest"]
@@ -33,7 +33,8 @@ db = cluster["streamTest"]
 @app.route("/")
 # what will be displayed on pg wrapped in this function
 def home():
-    create_mongodb.create_db(mongo_url)
+    # create_mongodb.create_db(mongo_url)
+
     # first document in the collection
     # first_record = mongo.db.streamHorizontal.find_one()
     # print(first_record)
