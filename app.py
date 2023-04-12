@@ -6,12 +6,13 @@ from bson.json_util import dumps
 import create_mongodb
 # from dotenv import load_dotenv
 import os 
-import pymongo
+from pymongo import MongoClient
 
 # load_dotenv() # use dotenv to hide sensitive credential as environment variables
 
-DATABASE_URL=f'mongodb+srv://loooret:{os.environ.get("password")}'\
-              '@cluster0.zf9dnan.mongodb.net/?retryWrites=true&w=majority' # get connection url from environment
+DATABASE_URL= 'mongodb+srv://loooret:5wXW3d4uMtqn6Ul6@cluster0.zf9dnan.mongodb.net/?retryWrites=true&w=majority' # get connection url from environment
+# DATABASE_URL=f'mongodb+srv://loooret:{os.environ.get("password")}'\
+#               '@cluster0.zf9dnan.mongodb.net/?retryWrites=true&w=majority' # get connection url from environment
 
 # client=pymongo.MongoClient(DATABASE_URL) # establish connection with database
 
@@ -22,11 +23,12 @@ app = Flask(__name__)
 mongo_url = "mongodb://localhost:27017"
 mongo_url = DATABASE_URL
 
-# app.config["MONGO_URI"] = "mongodb://localhost:27017/streamTest"
-app.config["MONGO_URI"] = mongo_url + "/streamTest"
+# app.config["MONGO_URI"] = mongo_url + "/streamTest"
+app.config["MONGO_URI"] = mongo_url 
 mongo = PyMongo(app)
 
-
+cluster = MongoClient(DATABASE_URL)
+db = cluster["streamTest"]
 # define how we get to page with app.route
 @app.route("/")
 # what will be displayed on pg wrapped in this function
@@ -34,6 +36,7 @@ def home():
     create_mongodb.create_db(mongo_url)
     # first document in the collection
     # first_record = mongo.db.streamHorizontal.find_one()
+    # print(first_record)
 
     return render_template("index.html")
 
@@ -54,7 +57,8 @@ def team():
 @app.route("/get_horizontal")
 def get_horizontal():
     # variable to find all data in streamData collection
-    mongo_horizontal = mongo.db.streamHorizontal.find()
+    # mongo_horizontal = mongo.db.streamHorizontal.find()     #######################
+    mongo_horizontal = db.streamHorizontal.find()     #######################
     # empty list to be transformed into json object
     json_horizontal = {}
     for all in mongo_horizontal:
@@ -69,7 +73,8 @@ def get_horizontal():
 @app.route("/get_vertical")
 def get_vertical():
     # variable to find all data in streamData collection
-    mongo_vertical = mongo.db.streamVertical.find()
+    # mongo_vertical = mongo.db.streamVertical.find()         ###############
+    mongo_vertical = db.streamVertical.find()         ###############
     # empty list to be transformed into json object
     json_vertical = {}
     for all in mongo_vertical:
@@ -84,7 +89,8 @@ def get_vertical():
 @app.route("/get_sunburst")
 def get_sunburst():
     # variable to find all data in streamData collection
-    mongo_vertical = mongo.db.streamSunburst.find({}, {"_id": 0})
+    # mongo_vertical = mongo.db.streamSunburst.find({}, {"_id": 0})   ######################
+    mongo_vertical = db.streamSunburst.find({}, {"_id": 0})   ######################
     # empty list to be transformed into json object
     json_sunburst = []
     for all in mongo_vertical:
