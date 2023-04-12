@@ -4,13 +4,14 @@ import json
 from bson import json_util
 from bson.json_util import dumps
 import create_mongodb
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 import os 
 from pymongo import MongoClient
 
 # load_dotenv() # use dotenv to hide sensitive credential as environment variables
 
-DATABASE_URL= 'mongodb+srv://loooret:5wXW3d4uMtqn6Ul6@cluster0.zf9dnan.mongodb.net/?retryWrites=true&w=majority' # get connection url from environment
+DATABASE_URL= 'mongodb+srv://loooret:{os.environ.get("password")}'\
+              '@cluster0.zf9dnan.mongodb.net/?retryWrites=true&w=majority' # get connection url from environment
 # DATABASE_URL=f'mongodb+srv://loooret:{os.environ.get("password")}'\
 #               '@cluster0.zf9dnan.mongodb.net/?retryWrites=true&w=majority' # get connection url from environment
 

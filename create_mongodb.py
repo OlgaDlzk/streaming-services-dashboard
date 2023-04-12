@@ -6,7 +6,7 @@ import os
 
 def create_db(url:str):
 
-    # load_dotenv() # use dotenv to hide sensitive credential as environment variables
+    load_dotenv() # use dotenv to hide sensitive credential as environment variables
 
     # DATABASE_URL=f'mongodb+srv://loooret:{os.environ.get("password")}'\
     #           '@cluster0.zf9dnan.mongodb.net/?retryWrites=true&w=majority' # get connection url from environment
