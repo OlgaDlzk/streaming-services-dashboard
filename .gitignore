@@ -132,3 +132,5 @@ dmypy.json
 .pyre/.env
 __pycache__
 *.pyc
+
+config.py
