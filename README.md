@@ -32,7 +32,7 @@ The rise of streaming technology changed a lot. There is no need to pay up to 10
 <a name="dataacq"></a>
 ## Data Acquirement
 
-Kaggle provided us with 4 datasets, one for each platform (Netflix, Hulu, Disney+, Prime Video). Each dataset contained the following information: movie title, genre, release date, added date, rating.
+Kaggle provided us with 4 datasets, one for each platform (Netflix, Hulu, Disney+, Prime Video). Each dataset contains the following information: movie title, genre, release date, added date, rating.
 Additionally, we cross-checked our merged dataset with the dataset that contained movies’ rotten tomato scores. Finally, we used ChatGPT API to re-assign genres and subgenres to each movie. 
 
 Datasets used:<br>
